@@ -43,4 +43,4 @@ php artisan serve
   ```
 
 ### A Postman Collection has also been provided for testing the API, see
-  `url-shortener.postman_collection`.
+  `url-shortener.postman_collection`
