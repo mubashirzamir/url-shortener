@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contracts\CryptoService;
 use App\Http\Requests\CryptoRequest;
 use App\Services\DefaultCryptoService;
+use Illuminate\Http\JsonResponse;
 
 class CryptoController extends Controller
 {
@@ -19,13 +20,19 @@ class CryptoController extends Controller
         $this->cryptoService = $cryptoService;
     }
 
-    public function encode(CryptoRequest $request): array
+    public function encode(CryptoRequest $request): JsonResponse
     {
-        return ['url' => $this->cryptoService->encode($request->input('url'))];
+        return response()->json(['url' => $this->cryptoService->encode($request->input('url'))]);
     }
 
-    public function decode(CryptoRequest $request): array
+    public function decode(CryptoRequest $request): JsonResponse
     {
-        return ['url' => $this->cryptoService->decode($request->input('url'))];
+        $decode = $this->cryptoService->decode($request->input('url'));
+
+        if ($decode === null) {
+            return response()->json(['error' => 'URL not found'], 404);
+        }
+
+        return response()->json(['url' => $decode]);
     }
 }
