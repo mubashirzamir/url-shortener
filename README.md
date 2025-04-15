@@ -8,7 +8,7 @@ A simple in-memory URL shortener built using Laravel.
 
 - PHP = 8.2
 - Composer = 2.8.3
-- Laravel = 10.x
+- Laravel = 12.0
 
 ## Run the App
 
