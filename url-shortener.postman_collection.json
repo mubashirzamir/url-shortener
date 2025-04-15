@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "5af3cfd1-8019-4461-aa89-7cddb83ebbf5",
+		"name": "url-shortener",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38866817"
+	},
+	"item": [
+		{
+			"name": "encode",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/encode?url=https://www.thisisalongdomain.com/with/some/parameters?and=here_too",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"encode"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "https://www.thisisalongdomain.com/with/some/parameters?and=here_too"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "decode",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/decode?url=http://short.est/1eeba7",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"decode"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "http://short.est/1eeba7"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
