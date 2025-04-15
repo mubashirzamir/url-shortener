@@ -4,10 +4,15 @@ namespace App\Services;
 
 use App\Contracts\CryptoService;
 use App\Contracts\UrlStorage;
+use App\Storage\InMemoryStorage;
 
 class DefaultCryptoService implements CryptoService
 {
     protected string $urlPrefix;
+    /**
+     * The following implementation is currently bound as the UrlStorage.
+     * @var InMemoryStorage
+     */
     protected UrlStorage $storage;
 
     public function __construct(UrlStorage $storage)
@@ -31,7 +36,7 @@ class DefaultCryptoService implements CryptoService
 
     protected function generateKey(string $url): string
     {
-        return substr(md5($url . microtime()), 0, 6);
+        return substr(md5($url), 0, 6);
     }
 
     protected function getKeyFromUrl(string $url): string
