@@ -14,6 +14,7 @@ A simple in-memory URL shortener built using Laravel.
 
 ```bash
 composer install
+php artisan migrate
 php artisan serve
 ```
 
