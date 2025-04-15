@@ -2,17 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\CryptoService;
 use App\Http\Requests\CryptoRequest;
+use App\Services\DefaultCryptoService;
 
 class CryptoController extends Controller
 {
-    public function encode(CryptoRequest $request)
+    /**
+     * The following implementation is currently bound as the CryptoService.
+     * @var DefaultCryptoService
+     */
+    protected CryptoService $cryptoService;
+
+    public function __construct(CryptoService $cryptoService)
     {
-        return "encode";
+        $this->cryptoService = $cryptoService;
     }
 
-    public function decode(CryptoRequest $request)
+    public function encode(CryptoRequest $request): array
     {
-        return "decode";
+        return ['url' => $this->cryptoService->encode($request->input('url'))];
+    }
+
+    public function decode(CryptoRequest $request): array
+    {
+        return ['url' => $this->cryptoService->decode($request->input('url'))];
     }
 }
